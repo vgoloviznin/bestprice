@@ -1,0 +1,44 @@
+﻿<div class="page-header">
+	<h1>Редактировать продукт</h1>
+</div>
+
+
+<form role="form" method="POST" action="/product/update">
+	<input type="hidden" name="id" value="{{model._id}}">
+	<div class="form-group">
+		<label for="name">Название</label>
+		<input class="form-control name-autocomplete" type="text" name="name" placeholder="Название" required="required" value="{{model.name}}">
+	</div>
+	<div class="form-group">
+		<label for="description">Описание</label>
+		<textarea class="form-control" rows="3" type="textarea" name="description" placeholder="Описание">{{model.description}}</textarea>
+	</div>
+	<div class="list-group">
+		<h4>Предыдущие цены</h4>
+		{{#each model.price}}
+			<a href="#" class="list-group-item disabled">{{getDate this.date}}: {{this.value}}</a>
+		{{/each}}
+	</div>
+	<div class="form-group">
+		<label for="price">Новая цена</label>
+		<input class="form-control" type="text" name="price" placeholder="Цена">
+	</div>
+	<div class="form-group">
+		<label for="shops">Компания</label>
+		<select class="form-control combo-box" name="company">			
+			{{#listopt companies model.company}}
+				<option {{#if this._selected }}selected="selected"{{/if}} data-sel="{{this._selected}}" value="{{this._id}}">{{this.name}}</option>
+			{{/listopt}}
+		</select>		
+	</div>
+	<div class="form-group">
+		<label for="shops">Магазин</label>
+		<select class="form-control combo-box" name="shop">
+			{{#listopt shops model.shop}}
+				<option {{#if this._selected }}selected="selected"{{/if}} value="{{this._id}}">{{this.name}}</option>
+			{{/listopt}}
+		</select>		
+	</div>
+
+	<button type="submit" class="btn btn-primary">Изменить</button>
+</form>

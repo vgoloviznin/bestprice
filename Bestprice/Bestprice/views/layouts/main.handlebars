@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+	    <meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0,width=device-width">
+	    <title>Лучшая цена</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+		<link rel="stylesheet" href="/css/jquery-ui.min.css">
+		<link rel="stylesheet" href="/css/jquery-ui.structure.min.css">
+		<link rel="stylesheet" href="/css/jquery-ui.theme.min.css">
+		<link rel="stylesheet" href="/css/jquery.scombobox.min.css">
+		<link rel="stylesheet" href="/css/core.css">
+	</head>
+	<body>
+		<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			        <span class="sr-only">Menu</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand {{#if helpers.isHome}}active{{/if}}" href="/">Хоум</a>
+			    </div>
+
+	    		<div class="collapse navbar-collapse">
+	    			<ul class="nav navbar-nav">
+	    				<li class="{{#if helpers.isProduct}}active{{/if}}"><a href="/product">Продукты</a></li>
+						<li class="{{#if helpers.isCompany}}active{{/if}}"><a href="/company">Компании</a></li>
+						<li class="{{#if helpers.isShop}}active{{/if}}"><a href="/shop">Магазины</a></li>
+						{{#if user}}
+							<li class="{{#if helpers.isOrder}}active{{/if}}"><a href="/order">Заказы</a></li>
+						{{/if}}						
+	    			</ul>
+
+	    			<div class="navbar-right">
+		    			{{#if user}}
+		    				<p class="navbar-text">Здравствуй, {{user.firstname}} <a class="navbar-link btn-lg" href="/register/logout"><span class="glyphicon glyphicon-log-out"></span></a></p>
+	    				{{else}}
+	    					<p class="navbar-text">Авторизация:</p>
+	    					
+	    					<a class="navbar-brand vk-icon" href="/register/vk">
+	    						<img width="32" height="32" src="https://pp.vk.me/c417817/v417817591/51f/OpKL5e7evpA.jpg">
+	    					</a>	    					
+		    			{{/if}}
+		    		</div>
+	    		</div>	    		
+			</div>			
+		</nav>
+
+		<div class="container-fluid">{{{body}}}</div>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>		
+		<script type="text/javascript" src="/js/libs/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="/js/libs/jquery-ui-autocomplete.min.js"></script>
+		<script type="text/javascript" src="/js/libs/scombobox.min.js"></script>
+		<script type="text/javascript" src="/js/core.js"></script>
+	</body>
+</html>

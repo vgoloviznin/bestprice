@@ -1,0 +1,28 @@
+﻿<div class="page-header">
+	<h1>
+		{{#ifadmin}}
+			<a class="btn btn-lg" role="button" href="/shop/update/{{model._id}}">
+				<span class="glyphicon glyphicon-edit"></span>
+			</a>
+		{{/ifadmin}}
+		
+		{{model.name}}
+
+		{{#ifadmin}}
+		<a class="btn btn-lg remove-item" role="button" data-id="{{model._id}}" href="/shop">
+			<span class="glyphicon glyphicon-remove-circle"></span>
+		</a>
+		{{/ifadmin}}		
+	</h1>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<small>{{model.address}}</small>
+	</div>	
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<p class="lead">{{model.description}}</p>
+	</div>	
+</div>
+
+<div class="row">{{#each products}}{{> product/product}}{{/each}}</div>

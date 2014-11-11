@@ -1,0 +1,34 @@
+﻿<div class="col-xs-6 col-sm-4">
+	<div class="thumbnail">
+		<div class="caption row">
+			<div class="col-xs-10">
+				<h3>
+					<a href="/product/{{this._id}}">{{name}}, {{getPrice price}}р.</a>								
+				</h3>		
+				<p class="lead">{{shop.name}}</p>
+				<p>{{description}}</p>
+			</div>
+			{{#ifadmin}}
+				<div class="col-xs-2">
+					<a class="btn remove-item pull-right" role="button" data-id="{{this._id}}" href="/product"><span class="glyphicon glyphicon-remove-circle"></span></a>
+					<a class="btn pull-right" href="/product/update/{{this._id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+				</div>	
+			{{/ifadmin}}					
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<form class="form-inline" role="form" method="POST" action="/order/add">
+					<input type="hidden" name="returnurl" value="{{returnUrl}}">
+					<input type="hidden" name="productid" value="{{this._id}}">					
+					<div class="form-group">
+						<label class="sr-only" for="quantity">Количество</label>
+						<input class="form-control" type="number" min="1" name="quantity" placeholder="Количество">
+					</div>
+					<button type="submit" class="btn">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

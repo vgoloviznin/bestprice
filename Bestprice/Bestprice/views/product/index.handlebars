@@ -1,0 +1,14 @@
+﻿<div class="page-header">
+	<h1>Продукты</h1>
+</div>
+
+{{#ifadmin}}
+	<div class="row form-group">
+		<div class="col-sm-12">
+			<a href="/product/create" class="btn btn-primary">Создать</a>
+		</div>
+	</div>
+{{/ifadmin}}
+
+
+{{#if model.length}}<div class="row">{{#each model}}{{> product/product}}{{/each}}</div>{{/if}}

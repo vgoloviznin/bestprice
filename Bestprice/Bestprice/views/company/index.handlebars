@@ -1,0 +1,27 @@
+﻿<div class="page-header">
+	<h1>Компании</h1>
+</div>
+
+{{#ifadmin}}
+	<div class="row form-group">
+		<div class="col-sm-12">
+			<a href="/company/create" class="btn btn-primary">Создать</a>
+		</div>
+	</div>
+{{/ifadmin}}
+
+
+{{#if model.length}}
+	<div class="row">
+		{{#each model}}
+			<div class="col-xs-6 col-sm-4">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3><a href="/company/{{this._id}}">{{this.name}}</a></h3>								
+						<p>{{this.description}}</p>
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+{{/if}}

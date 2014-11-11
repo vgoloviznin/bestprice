@@ -1,0 +1,33 @@
+﻿<div class="page-header">
+	<h1>Заказы</h1>
+</div>
+
+{{#if model.length}}
+	<div class="row">
+		{{#each model}}
+			<div class="col-xs-6 col-sm-4">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3>
+							<a href="/order/{{this.id}}">{{getDate this.modified}}</a>
+							{{#if this.completed}}
+								<span class="label label-success">Завершен</span>
+							{{/if}}
+						</h3>	
+						<p><i>Общее количество товаров: {{this.totalQuantity}}</i></p>					
+						<p><b>На общую сумму: {{this.totalPrice}}р.</b></p>
+						{{#ifnot this.completed}}
+							<p>
+								<form role="form" method="POST" action="/order/complete">
+									<input type="hidden" name="id" value="{{this.id}}">
+									<button type="submit" class="btn btn-success">Завершить</button>
+								</form>
+							</p>
+						{{/ifnot}}
+						
+					</div>
+				</div>
+			</div>
+		{{/each}}
+	</div>
+{{/if}}
